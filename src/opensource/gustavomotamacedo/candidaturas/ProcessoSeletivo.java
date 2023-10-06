@@ -1,4 +1,6 @@
 package opensource.gustavomotamacedo.candidaturas;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 public class ProcessoSeletivo {
@@ -16,11 +18,11 @@ public class ProcessoSeletivo {
 			System.out.println("Aguardando demais candidatos ");
 	}
 	
-	public static void imprimirSelecionados(String [] selecionados) {
-		String [] candidatos = selecionados;
+	public static void imprimirSelecionados(List<String> selecionados) {
+		List<String> candidatos = selecionados;
 		System.out.println("Imprimindo lista de candidatos, informando o índicie.");
-		for (int i = 0; i < candidatos.length; i++) {
-			System.out.println("Candidato de número " + (i + 1) + " é: " + candidatos[i]);
+		for (int i = 0; i < candidatos.size(); i++) {
+			System.out.println("Candidato de número " + (i + 1) + " é: " + candidatos.get(i));
 		}
 		System.out.println("Imprimindo lista de candidatos, de forma abreviada.");
 		for (String candidato : candidatos) {
@@ -53,7 +55,7 @@ public class ProcessoSeletivo {
 	
 	public static void main(String[] args) {
 		String [] candidatos = {"FELIPE", "GUSTAVO", "JÕAO", "NATHAN", "NAIANDRA", "VITOR", "RICARDO", "MARCUS", "HUDSON", "MATHEUS"};
-		String [] selecionados = new String[5];
+		List<String> selecionados = new ArrayList<String>();
 		int candidatosSelecionados = 0;
 		int candidatoAtual = 0;
 		double salarioBase = 2000.0;
@@ -63,7 +65,7 @@ public class ProcessoSeletivo {
 			System.out.println("O candidato " + candidato + " solicitou R$" + salarioPretendido + ".");
 			if (salarioBase >= salarioPretendido) {
 				System.out.println("O candidato " + candidato + " foi selecionado para a vaga.");
-				selecionados[candidatosSelecionados] = candidato;
+				selecionados.add(candidato);
 				++candidatosSelecionados;
 			}
 			candidatoAtual++;
